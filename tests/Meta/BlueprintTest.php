@@ -1,6 +1,9 @@
 <?php
 
+namespace Test\Reliese\Meta;
+
 use Reliese\Meta\Blueprint;
+use Test\Reliese\TestCase;
 
 /**
  * Created by Cristian.

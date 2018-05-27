@@ -1,4 +1,8 @@
 <?php
+namespace Test\Reliese;
+
+use Mockery;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Created by Cristian.
