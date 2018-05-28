@@ -84,13 +84,13 @@ class ClassifyTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('flarp',
             $classify->mixin('flarp'),
             'Mixin failed to include name of mixin.');
-        $this->assertContains("use \\\\flarp",
+        $this->assertContains("use \\flarp",
             $classify->mixin('\flarp'),
             "Mixin does not add `\\` to mixin beginning with `\\`.");
         $this->assertContains("use \\flarp",
             $classify->mixin("flarp"),
             "Mixin does not add exactly one `\\` before mixin not beginning with `\\`.");
-$this->assertContains("use \\\\flarp;", $classify->mixin('\\\\' . 'Flarp'), 'Mixin does not remove leading `\'\\\\\'` 
+$this->assertContains("use \\Flarp;", $classify->mixin('\\' . 'Flarp'), 'Mixin does not remove leading `\'\\\\\'` 
         from class name.');
 
     }
