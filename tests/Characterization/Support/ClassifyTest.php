@@ -34,6 +34,13 @@ class ClassifyTest extends \PHPUnit_Framework_TestCase
         $this->assertContains("\t", $field, "Field is missing `\t` character.");
         $this->assertContains('visibilityOption', $field, 'Filed is missing `visibility` option.');
         $this->assertContains('afterOption', $field, 'Field is missing `after` option.');
+        $this->assertNotContains('"1"', $classify->field('one', [1]), 'Field converts integer array value to string.');
+        $this->assertNotContains("'1'", $classify->field('one', [1]), 'Field converts integer array value to string.');
+        $this->assertContains(
+            "'Reliese\\\\Support\\\\Classify'",
+            $classify->field(
+                'one',
+                [Classify::class]));
     }
 
     public function testAnnotation()
@@ -83,6 +90,8 @@ class ClassifyTest extends \PHPUnit_Framework_TestCase
         $this->assertContains("use \\flarp",
             $classify->mixin("flarp"),
             "Mixin does not add exactly one `\\` before mixin not beginning with `\\`.");
+$this->assertContains("use \\\\flarp;", $classify->mixin('\\\\' . 'Flarp'), 'Mixin does not remove leading `\'\\\\\'` 
+        from class name.');
 
     }
 }
